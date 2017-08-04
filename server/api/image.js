@@ -34,12 +34,12 @@ var options = {
   json: true
 };
 
-request(options)
-  .then((apiResult) => {
-    console.log(apiResult)
-  })
-  .catch( (err) => {
-    console.log("Api fetch failed", err);
-  });
+// request(options)
+//   .then((apiResult) => {
+//     console.log(apiResult)
+//   })
+//   .catch( (err) => {
+//     console.log("Api fetch failed", err);
+//   });
 
 module.exports = router;
