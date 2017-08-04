@@ -54,7 +54,7 @@ router.post('/', (req, res, next) => {
 //   method: 'POST',
 //   uri:'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
 //   body: {"url": "http://clipart-library.com/images/dc9rGngoi.jpg"},
-//   headers: {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': '6f7761f334d64fd6858be9240a806eb9' },
+//   headers: {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': '' },
 //   json: true
 // };
 
