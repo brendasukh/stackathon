@@ -52,6 +52,24 @@ class Camera extends React.Component {
     this.clearCanvas();
   }
 
+  //   handleClick(evt){
+  //   var context = this.refs.canvas.getContext('2d');
+  //   var video = this.refs.video;
+  //   var capturedImage = context.drawImage(video, 0, 0, 640, 480);
+  //   var img = context.getImageData(0, 0, 640, 480);
+  //   this.setState({image: img});
+  //   this.props.saveImage(img);
+  //   this.clearCanvas();
+  // }
+
+    download(){
+        var download = document.getElementById("download");
+        var image = document.getElementById("canvas").toDataURL("image/png")
+                    .replace("image/png", "image/octet-stream");
+        download.setAttribute("href", image);
+
+    }
+
   render() {
     console.log("image: ", this.state.image)
     return (

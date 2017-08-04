@@ -26,7 +26,7 @@ const saveImage = status => ({ type: SAVE_IMAGE, status })
 
 export const saveImageContent = (imageContent) =>
     dispatch =>
-        axios.post('/api/image', imageContent)
+        axios.post('/api/image', {image: imageContent})
         .then(res => {
             console.log("Image saved?: ", res.data);
             dispatch(saveImage(res.data));
