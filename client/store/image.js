@@ -14,16 +14,7 @@ const saveImage = status => ({ type: SAVE_IMAGE, status })
 /**
  * THUNK CREATORS
  */
-
-// export const saveImageContent = (imageContent) =>
-//     dispatch =>
-//         axios.post('/api/image', imageContent)
-//         .then(res => {
-//             console.log("Image saved?: ", res.data);
-//             dispatch(saveImage(res.data));
-//         })
-//         .catch(err => console.log(err))
-
+/* axios post: payload should be object*/
 export const saveImageContent = (imageContent) =>
     dispatch =>
         axios.post('/api/image', {image: imageContent})
