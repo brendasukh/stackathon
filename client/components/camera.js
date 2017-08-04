@@ -41,7 +41,7 @@ class Camera extends React.Component {
     var context = this.refs.canvas.getContext('2d');
     var video = this.refs.video;
     var capturedImage = context.drawImage(video, 0, 0, 640, 480);
-    var img = this.refs.canvas.toDataURL("image/png");
+    var img = this.refs.canvas.toDataURL("image/jpeg");
     this.setState({image: img});
     this.props.saveImage(img);
     this.clearCanvas();
