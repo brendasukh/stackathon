@@ -1,5 +1,4 @@
 node_modules
-public/images
 public/bundle.js
 public/bundle.js.map
 secrets.js
