@@ -44,7 +44,6 @@ class Camera extends React.Component {
   }
 
   render() {
-    console.log("image: ", this.state.image)
     return (
       <div>
         <video id="video" ref="video" width="640" height="480" autoPlay></video>
