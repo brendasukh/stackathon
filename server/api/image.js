@@ -5,9 +5,21 @@ const request = require('request-promise');
 var imgur = require('imgur');
 // imgur.setCredentials('brendasukh@gmail.com', 'Brendasukh918');
 
-var index = 1;
-var binaryBuffer, buf, data
-var link;
+function pickEmotion(emotion){
+  switch(emotion){
+  case 'happiness':
+    return 'GOOD JOB YOU\'RE HAPPY!'
+  case 'disgust':
+    return 'YOU\'RE DISGUSTED!'
+  case 'sadness':
+    return 'YOU\'RE SAD :('
+  default :
+    return 'YOU\'RE LAME!'
+  }
+}
+
+var binaryBuffer, buf, data, link, index
+
   var options = {
     method: 'POST',
     uri:'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
@@ -15,6 +27,21 @@ var link;
     headers: {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': '6f7761f334d64fd6858be9240a806eb9' },
     json: true
   };
+
+
+
+
+  function anotherOne(inputObj){
+    var highest={value: 0, key: ''}
+    for (var element in inputObj){
+      if (inputObj[element]>highest.value && element !== 'neutral'){
+        highest.value = (inputObj[element])
+        highest.key=(element)
+
+      }
+    }
+    return highest
+  }
 router.post('/', (req, res, next) => {
   const imageName = 'test' + index + '.jpg';
   data= req.body.image.replace(/^data:image\/(png|jpeg);base64,/, "");
@@ -30,11 +57,15 @@ router.post('/', (req, res, next) => {
         return request(options)
     .then((apiResult) => {
       console.log((apiResult[0]).scores)
-      return apiResult
+      return(anotherOne(apiResult[0].scores))
     })
-    .then((apiResult) => {
-
+    .then((emotion) => {
+      return pickEmotion(emotion.key)
     })
+    .then((message) => {
+      console.log(message)
+    })
+    
     .catch( (err) => {
       console.log("Api fetch failed", err);
     });
