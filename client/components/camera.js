@@ -13,10 +13,12 @@ class Camera extends React.Component {
     this.takeVideo = this.takeVideo.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.styling = this.styling.bind(this);
   }
 
   componentDidMount() {
     this.takeVideo();
+    this.styling();
   }
 
   takeVideo() {
@@ -47,13 +49,55 @@ class Camera extends React.Component {
     this.clearCanvas();
   }
 
+  styling(){
+    var page = this.refs.page;
+    // This transition can be defined in the CSS if preferred.
+    var transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
+    page.style.transition = transition;
+    page.onclick = slideDown;
+
+    function slideDown(e) {
+      // Delegate.
+      if (e.target.className !== 'next') {
+        return;
+      }
+
+      // Prevent firing simultaneously.
+      page.onclick = '';
+      var self = e.target.parentNode;
+      var offset = self.getBoundingClientRect();
+      var scroll = self.offsetTop;
+
+      // CSS Transition slide.
+      page.style.top = (-offset.height-offset.top) + 'px';
+
+      setTimeout(function () {
+        // Reposition the real scrollbar.
+        page.style.transition = 'none';
+        page.style.top = '';
+        window.scrollTo(0, offset.height+scroll);
+        page.style.transition = transition;
+        // Reattach event.
+        page.onclick = slideDown;
+
+        // This timeout length should match the CSS animation time (.8s).
+      }, 800);
+    }
+  }
+
   render() {
     return (
-      <div>
-        <video id="video" ref="video" width="640" height="480" autoPlay></video>
-        <button id="snap" onClick={this.handleClick}>Snap Photo</button>
-        <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>
+      <div id="page" ref="page">
+         <section className="one">
+           <video id="video" ref="video" width="640" height="480" autoPlay></video>
+          <button className="next" id="snap" onClick={this.handleClick}>Snap Photo</button>
+        </section>
+        <section className="two">
+          <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>
+          <div className="next"></div>
+        </section>
       </div>
+
     )
   }
 }

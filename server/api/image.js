@@ -28,9 +28,6 @@ var binaryBuffer, buf, data, link, index
     json: true
   };
 
-
-
-
   function anotherOne(inputObj){
     var highest={value: 0, key: ''}
     for (var element in inputObj){
@@ -42,6 +39,7 @@ var binaryBuffer, buf, data, link, index
     }
     return highest
   }
+
 router.post('/', (req, res, next) => {
   const imageName = 'test' + index + '.jpg';
   data= req.body.image.replace(/^data:image\/(png|jpeg);base64,/, "");
@@ -51,7 +49,7 @@ router.post('/', (req, res, next) => {
   imgur.uploadBase64(data)
     .then(function (json) {
         link = json.data.link;
-        options.body.url=link 
+        options.body.url=link
         // console.log(link)
         // console.log(json.data.link)
         return request(options)
@@ -65,18 +63,18 @@ router.post('/', (req, res, next) => {
     .then((message) => {
       console.log(message)
     })
-    
+
     .catch( (err) => {
       console.log("Api fetch failed", err);
     });
     })
-    
+
     .catch(function (err) {
         console.error(err.message)
     });
 
 
-  
+
   // var binaryBuffer = new Buffer(buf, 'binary')
   // fs.writeFile(path.join(__dirname, `../../public/images/${imageName}`), buf,  (err) => {
   //   if(err){
@@ -103,7 +101,7 @@ router.post('/', (req, res, next) => {
   //   .catch( (err) => {
   //     console.log("Api fetch failed", err);
   //   });
-    
+
   })
 // binaryBuffer = fs.readFileSync(path.join(__dirname, '../../public/images/test1.jpg'))
 // // binaryBuffer = fs.createReadStream(p)

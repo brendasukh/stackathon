@@ -15,15 +15,8 @@ module.exports = app
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
  */
-// if (process.env.NODE_ENV !== 'production') 
-// require('../secrets')
-
-// passport registration
-// passport.serializeUser((user, done) => done(null, user.id))
-// passport.deserializeUser((id, done) =>
-  // db.models.user.findById(id)
-  //   .then(user => done(null, user))
-  //   .catch(done))
+if (process.env.NODE_ENV !== 'production')
+require('../secrets')
 
 const createApp = () => {
   // logging middleware
@@ -33,18 +26,6 @@ const createApp = () => {
   app.use(bodyParser.json({limit:'50mb'}))
   app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
-  // session middleware with passport
-  // app.use(session({
-  //   secret: process.env.SESSION_SECRET || 'my best friend is Cody',
-  //   store: sessionStore,
-  //   resave: false,
-  //   saveUninitialized: false
-  // }))
-  // app.use(passport.initialize())
-  // app.use(passport.session())
-
-  // auth and api routes
-  // app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
   // static file-serving middleware
@@ -66,10 +47,6 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
-
-  // set up our socket control center
-  // const io = socketio(server)
-  // require('./socket')(io)
 }
 
 // This evaluates as true when this file is run directly from the command line,
@@ -77,12 +54,6 @@ const startListening = () => {
 // It will evaluate false when this module is required by another module - for example,
 // if we wanted to require our app in a test spec
 if (require.main === module) {
-//   sessionStore.sync()
-//     .then(syncDb)
-//     .then(createApp)
-    // (startListening)
-// } else {
   createApp()
   startListening()
-
 }
