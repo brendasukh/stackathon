@@ -3450,7 +3450,7 @@ Object.keys(_user).forEach(function (key) {
   });
 });
 
-var _emotion = __webpack_require__(150);
+var _emotion = __webpack_require__(354);
 
 Object.keys(_emotion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -15126,71 +15126,7 @@ _reactDom2.default.render(_react2.default.createElement(
 // establishes socket connection
 
 /***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.saveImageContent = undefined;
-
-exports.default = function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Failure';
-    var action = arguments[1];
-
-    switch (action.type) {
-        case SAVE_IMAGE:
-            return action.status;
-        default:
-            return state;
-    }
-};
-
-var _axios = __webpack_require__(69);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _history = __webpack_require__(42);
-
-var _history2 = _interopRequireDefault(_history);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * ACTION TYPES
- */
-var SAVE_IMAGE = 'SAVE_IMAGE';
-
-/**
- * ACTION CREATORS
- */
-var saveImage = function saveImage(status) {
-    return { type: SAVE_IMAGE, status: status };
-};
-
-/**
- * THUNK CREATORS
- */
-/* axios post: payload should be object*/
-var saveImageContent = exports.saveImageContent = function saveImageContent(imageContent) {
-    return function (dispatch) {
-        return _axios2.default.post('/api/image', { image: imageContent }).then(function (res) {
-            console.log("Emotion: ", res.data);
-            dispatch(saveImage(res.data));
-        }).catch(function (err) {
-            return console.log(err);
-        });
-    };
-};
-
-/**
- * REDUCER
- */
-
-/***/ }),
+/* 150 */,
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31629,6 +31565,116 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.saveImageContent = undefined;
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Failure';
+    var action = arguments[1];
+
+    switch (action.type) {
+        case SAVE_IMAGE:
+            return action.status;
+        default:
+            return state;
+    }
+};
+
+var _axios = __webpack_require__(69);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _history = __webpack_require__(42);
+
+var _history2 = _interopRequireDefault(_history);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * ACTION TYPES
+ */
+var SAVE_IMAGE = 'SAVE_IMAGE';
+
+/**
+ * ACTION CREATORS
+ */
+var saveImage = function saveImage(status) {
+    return { type: SAVE_IMAGE, status: status };
+};
+
+/**
+ * THUNK CREATORS
+ */
+/* axios post: payload should be object*/
+var saveImageContent = exports.saveImageContent = function saveImageContent(imageContent) {
+    return function (dispatch) {
+        return _axios2.default.post('/api/image', { image: imageContent }).then(function (res) {
+            console.log("Emotion: ", res.data);
+            dispatch(saveImage(res.data));
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    };
+};
+
+/**
+ * REDUCER
+ */
 
 /***/ })
 /******/ ]);
