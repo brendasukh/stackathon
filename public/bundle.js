@@ -14528,13 +14528,38 @@ var Camera = function (_React$Component) {
   }, {
     key: 'handleClick',
     value: function handleClick(evt) {
+      var _this2 = this;
+
+      var canvas = this.refs.canvas;
       var context = this.refs.canvas.getContext('2d');
       var video = this.refs.video;
-      var capturedImage = context.drawImage(video, 0, 0, 640, 480);
-      var img = this.refs.canvas.toDataURL("image/jpeg");
-      this.setState({ image: img });
-      this.props.saveImage(img);
-      this.clearCanvas();
+      var counter = 0;
+      var clearCanvas = function clearCanvas() {
+        return _this2.clearCanvas();
+      };
+      var img = function img() {
+        return _this2.refs.canvas.toDataURL("image/jpeg");
+      };
+      var setState = function setState() {
+        return _this2.setState({ image: img() });
+      };
+      var saveImage = function saveImage() {
+        return _this2.props.saveImage(img());
+      };
+      // take a picture every 1000 seconds for a total of 6 pictures. 
+      // wait until the interval is done to save the last image. 
+      var interval = setInterval(function () {
+        counter++;
+        var capturedImage = context.drawImage(video, 0, 0, 640, 480);
+        if (counter === 6) {
+          // console.log(img())
+          img();
+          setState();
+          saveImage();
+          clearCanvas();
+          clearInterval(interval);
+        }
+      }, 1000);
     }
   }, {
     key: 'styling',

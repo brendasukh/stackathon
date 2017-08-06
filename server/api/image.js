@@ -54,6 +54,7 @@ router.post('/', (req, res, next) => {
         return request(options)
     .then((apiResult) => {
       // console.log((apiResult[0]).scores)
+      console.log('apiResult', apiResult)
       return(anotherOne(apiResult[0].scores))
     })
     .then((emotion) => {
