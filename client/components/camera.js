@@ -90,7 +90,7 @@ class Camera extends React.Component {
       <div id="page" ref="page">
          <section className="one">
            <video id="video" ref="video" width="640" height="480" autoPlay></video>
-          <button className="next" id="snap" onClick={this.handleClick}>Snap Photo</button>
+          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
         </section>
         <section className="two">
           <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>

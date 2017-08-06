@@ -13541,8 +13541,7 @@ function warning(message) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.Routes = undefined;
 
 var _react = __webpack_require__(6);
 
@@ -13564,113 +13563,23 @@ var _history2 = _interopRequireDefault(_history);
 
 var _components = __webpack_require__(146);
 
-var _store = __webpack_require__(26);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * COMPONENT
  */
-var Routes = function (_Component) {
-  _inherits(Routes, _Component);
-
-  function Routes() {
-    _classCallCheck(this, Routes);
-
-    return _possibleConstructorReturn(this, (Routes.__proto__ || Object.getPrototypeOf(Routes)).apply(this, arguments));
-  }
-
-  _createClass(Routes, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.loadInitialData();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var isLoggedIn = this.props.isLoggedIn;
-
-
-      return _react2.default.createElement(
-        _reactRouter.Router,
-        { history: _history2.default },
-        _react2.default.createElement(
-          _components.Main,
-          null,
-          _react2.default.createElement(
-            _reactRouterDom.Switch,
-            null,
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _components.Login }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/signup', component: _components.Signup }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/camera', component: _components.Camera }),
-            isLoggedIn && _react2.default.createElement(
-              _reactRouterDom.Switch,
-              null,
-              _react2.default.createElement(_reactRouterDom.Route, { path: '/home', component: _components.UserHome })
-            ),
-            _react2.default.createElement(_reactRouterDom.Route, { component: _components.Login })
-          )
-        )
-      );
-    }
-  }]);
-
-  return Routes;
-}(_react.Component);
-
-/**
- * CONTAINER
- */
-
-
-var mapState = function mapState(state) {
-  return {
-    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
-  };
+var Routes = exports.Routes = function Routes() {
+  return _react2.default.createElement(
+    _reactRouter.Router,
+    { history: _history2.default },
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _components.Camera })
+  );
 };
 
-var mapDispatch = function mapDispatch(dispatch) {
-  return {
-    loadInitialData: function loadInitialData() {}
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(Routes);
-
-/**
- * PROP TYPES
- */
-
-Routes.propTypes = {
-  loadInitialData: _propTypes2.default.func.isRequired,
-  isLoggedIn: _propTypes2.default.bool.isRequired
-};
+exports.default = Routes;
 
 /***/ }),
-/* 124 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// import io from 'socket.io-client';
-
-// const socket = io(window.location.origin);
-
-// socket.on('connect', function () {
-//   console.log('Connected!');
-// });
-
-// export default socket
-
-
-/***/ }),
+/* 124 */,
 /* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14542,150 +14451,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Signup = exports.Login = undefined;
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(21);
-
-var _propTypes = __webpack_require__(7);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _store = __webpack_require__(26);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * COMPONENT
- */
-var AuthForm = function AuthForm(props) {
-  var name = props.name,
-      displayName = props.displayName,
-      handleSubmit = props.handleSubmit,
-      error = props.error;
-
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'form',
-      { onSubmit: handleSubmit, name: name },
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'label',
-          { htmlFor: 'email' },
-          _react2.default.createElement(
-            'small',
-            null,
-            'Email'
-          )
-        ),
-        _react2.default.createElement('input', { name: 'email', type: 'text' })
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'label',
-          { htmlFor: 'password' },
-          _react2.default.createElement(
-            'small',
-            null,
-            'Password'
-          )
-        ),
-        _react2.default.createElement('input', { name: 'password', type: 'password' })
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'button',
-          { type: 'submit' },
-          displayName
-        )
-      ),
-      error && error.response && _react2.default.createElement(
-        'div',
-        null,
-        ' ',
-        error.response.data,
-        ' '
-      )
-    ),
-    _react2.default.createElement(
-      'a',
-      { href: '/auth/google' },
-      displayName,
-      ' with Google'
-    )
-  );
-};
-
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
-var mapLogin = function mapLogin(state) {
-  return {
-    name: 'login',
-    displayName: 'Login',
-    error: state.user.error
-  };
-};
-
-var mapSignup = function mapSignup(state) {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  };
-};
-
-var mapDispatch = function mapDispatch(dispatch) {
-  return {
-    handleSubmit: function handleSubmit(evt) {
-      evt.preventDefault();
-      var formName = evt.target.name;
-      var email = evt.target.email.value;
-      var password = evt.target.password.value;
-      dispatch((0, _store.auth)(email, password, formName));
-    }
-  };
-};
-
-var Login = exports.Login = (0, _reactRedux.connect)(mapLogin, mapDispatch)(AuthForm);
-var Signup = exports.Signup = (0, _reactRedux.connect)(mapSignup, mapDispatch)(AuthForm);
-
-/**
- * PROP TYPES
- */
-AuthForm.propTypes = {
-  name: _propTypes2.default.string.isRequired,
-  displayName: _propTypes2.default.string.isRequired,
-  handleSubmit: _propTypes2.default.func.isRequired,
-  error: _propTypes2.default.object
-};
-
-/***/ }),
+/* 144 */,
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14820,7 +14586,11 @@ var Camera = function (_React$Component) {
           _react2.default.createElement(
             'button',
             { className: 'next', id: 'snap', onClick: this.handleClick },
-            'Snap Photo'
+            _react2.default.createElement(
+              'span',
+              { className: 'glyphicon' },
+              '\uE046'
+            )
           )
         ),
         _react2.default.createElement(
@@ -14866,39 +14636,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _main = __webpack_require__(147);
-
-Object.defineProperty(exports, 'Main', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_main).default;
-  }
-});
-
-var _userHome = __webpack_require__(148);
-
-Object.defineProperty(exports, 'UserHome', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_userHome).default;
-  }
-});
-
-var _authForm = __webpack_require__(144);
-
-Object.defineProperty(exports, 'Login', {
-  enumerable: true,
-  get: function get() {
-    return _authForm.Login;
-  }
-});
-Object.defineProperty(exports, 'Signup', {
-  enumerable: true,
-  get: function get() {
-    return _authForm.Signup;
-  }
-});
-
 var _camera = __webpack_require__(145);
 
 Object.defineProperty(exports, 'Camera', {
@@ -14911,182 +14648,8 @@ Object.defineProperty(exports, 'Camera', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 147 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(7);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactRedux = __webpack_require__(21);
-
-var _reactRouterDom = __webpack_require__(64);
-
-var _store = __webpack_require__(26);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * COMPONENT
- *  The Main component is our 'picture frame' - it displays the navbar and anything
- *  else common to our entire app. The 'picture' inside the frame is the space
- *  rendered out by the component's `children`.
- */
-var Main = function Main(props) {
-  var children = props.children,
-      handleClick = props.handleClick,
-      isLoggedIn = props.isLoggedIn;
-
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'BOILERMAKER'
-    ),
-    _react2.default.createElement(
-      'nav',
-      null,
-      isLoggedIn ? _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/home' },
-          'Home'
-        ),
-        _react2.default.createElement(
-          'a',
-          { href: '#', onClick: handleClick },
-          'Logout'
-        )
-      ) : _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/login' },
-          'Login'
-        ),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/signup' },
-          'Sign Up'
-        )
-      )
-    ),
-    _react2.default.createElement('hr', null),
-    children
-  );
-};
-
-/**
- * CONTAINER
- */
-var mapState = function mapState(state) {
-  return {
-    isLoggedIn: !!state.user.id
-  };
-};
-
-var mapDispatch = function mapDispatch(dispatch) {
-  return {
-    handleClick: function handleClick() {
-      dispatch((0, _store.logout)());
-    }
-  };
-};
-
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapState, mapDispatch)(Main));
-
-/**
- * PROP TYPES
- */
-
-Main.propTypes = {
-  children: _propTypes2.default.object,
-  handleClick: _propTypes2.default.func.isRequired,
-  isLoggedIn: _propTypes2.default.bool.isRequired
-};
-
-/***/ }),
-/* 148 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.UserHome = undefined;
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(7);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactRedux = __webpack_require__(21);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * COMPONENT
- */
-var UserHome = exports.UserHome = function UserHome(props) {
-  var email = props.email;
-
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h3',
-      null,
-      'Welcome, ',
-      email
-    )
-  );
-};
-
-/**
- * CONTAINER
- */
-var mapState = function mapState(state) {
-  return {
-    email: state.user.email
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapState)(UserHome);
-
-/**
- * PROP TYPES
- */
-
-UserHome.propTypes = {
-  email: _propTypes2.default.string
-};
-
-/***/ }),
+/* 147 */,
+/* 148 */,
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15113,8 +14676,6 @@ var _routes = __webpack_require__(123);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-__webpack_require__(124);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(
@@ -15122,8 +14683,6 @@ _reactDom2.default.render(_react2.default.createElement(
   { store: _store2.default },
   _react2.default.createElement(_routes2.default, null)
 ), document.getElementById('app'));
-
-// establishes socket connection
 
 /***/ }),
 /* 150 */,
@@ -16208,7 +15767,7 @@ exports = module.exports = __webpack_require__(155)();
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: Helvetica,Sans-serif;\n  font-weight: bold;\n  font-size: 8vw;\n  color: #FFF;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\n.one {\n  background-color: lightblue; }\n\n.two {\n  background-color: lightsalmon; }\n\n.three {\n  background-color: lightgoldenrodyellow; }\n\n.four {\n  background-color: lightseagreen; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: Helvetica,Sans-serif;\n  font-weight: bold;\n  font-size: 8vw;\n  color: #FFF;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background-color: lightblue; }\n\n.two {\n  background-color: lightsalmon; }\n\n.three {\n  background-color: lightgoldenrodyellow; }\n\n.four {\n  background-color: lightseagreen; }\n", ""]);
 
 // exports
 
