@@ -96,12 +96,31 @@ class Camera extends React.Component {
           <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>
           <div className="next"></div>
         </section>
+        <section className="three">
+          {
+            (this.props.emotion && this.props.emotion === 'anger')
+            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
+            : (this.props.emotion &&  this.props.emotion === 'contempt')
+            ? <img src='http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif' width="200" height="200"></img>
+            : (this.props.emotion &&  this.props.emotion === 'disgust')
+            ? <img src='https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051' width="200" height="200"></img>
+            : (this.props.emotion &&  this.props.emotion === 'fear')
+            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png' width="200" height="200"></img>
+            : (this.props.emotion &&  this.props.emotion === 'happiness')
+            ? <img src='https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png'width="200" height="200" ></img>
+            : (this.props.emotion &&  this.props.emotion === 'neutral')
+            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            : (this.props.emotion && this.props.emotion === 'sadness')
+            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png' width="200" height="200"></img>
+            : <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+          }
+        </section>
       </div>
 
     )
   }
 }
-const mapStateToProps = ({  }) => ({  })
+const mapStateToProps = ({ emotion }) => ({ emotion })
 
 const mapDispatchToProps = (dispatch) => {
   return {

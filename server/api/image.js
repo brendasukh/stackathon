@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path')
 const request = require('request-promise');
 var imgur = require('imgur');
-// imgur.setCredentials('brendasukh@gmail.com', 'Brendasukh918');
 
 function pickEmotion(emotion){
   switch(emotion){
@@ -24,7 +23,7 @@ var binaryBuffer, buf, data, link, index
     method: 'POST',
     uri:'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
     body: {'url' : 'http://i.imgur.com/7SpSlkC.jpg'},
-    headers: {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': '6f7761f334d64fd6858be9240a806eb9' },
+    headers: {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': process.env.MS_SUBSCRIPTION_KEY },
     json: true
   };
 
@@ -54,16 +53,13 @@ router.post('/', (req, res, next) => {
         // console.log(json.data.link)
         return request(options)
     .then((apiResult) => {
-      console.log((apiResult[0]).scores)
+      // console.log((apiResult[0]).scores)
       return(anotherOne(apiResult[0].scores))
     })
     .then((emotion) => {
-      return pickEmotion(emotion.key)
+      console.log(emotion.key + ": " +emotion.value);
+      res.send(emotion.key);
     })
-    .then((message) => {
-      console.log(message)
-    })
-
     .catch( (err) => {
       console.log("Api fetch failed", err);
     });

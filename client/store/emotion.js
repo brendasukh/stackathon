@@ -19,7 +19,7 @@ export const saveImageContent = (imageContent) =>
     dispatch =>
         axios.post('/api/image', {image: imageContent})
         .then(res => {
-            console.log("Image saved?: ", res.data);
+            console.log("Emotion: ", res.data);
             dispatch(saveImage(res.data));
         })
         .catch(err => console.log(err))
