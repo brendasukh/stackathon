@@ -14,6 +14,7 @@ class Camera extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
     this.styling = this.styling.bind(this);
+    this.emotionRedirect = this.emotionRedirect.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,28 @@ class Camera extends React.Component {
     context.clearRect(0, 0, 640, 480);
     this.props.updateEmotion();
     window.scrollTo(0, 0);
+  }
+  emotionRedirect(){
+    switch(this.props.emotion){
+      case 'anger':
+        return 'https://youtu.be/xFKe03Z8ASU'
+      case 'contempt':
+        return 'https://www.youtube.com/watch?v=UzPMMSKfKZQ'
+      case 'disgust':
+        return 'https://youtu.be/XyNlqQId-nk?t=39s'
+        // cat video
+      case 'sadness':
+        return 'https://www.youtube.com/watch?v=Jc8VaMQ5aOo'
+      case 'fear':
+        return 'https://www.youtube.com/watch?v=kFv4qYZQz1g'
+      case 'happiness':
+        return 'https://youtu.be/ZbZSe6N_BXs?t=17s'
+      case 'neutral':
+        return 'https://www.youtube.com/watch?v=Jc8VaMQ5aOo'
+      case 'surprise':
+        return 'https://www.youtube.com/watch?v=GRls1Gslc9Y'
+        //surprsing facts about earth'
+    }
   }
 
   styling(){
@@ -87,7 +110,6 @@ class Camera extends React.Component {
   }
 
   render() {
-    console.log("scores", this.props.scores);
     return (
       <div id="page" ref="page">
          <section className="camera-one">
@@ -121,35 +143,60 @@ class Camera extends React.Component {
           <div className="next"></div>
         </section>
         <section className="camera-four">
-          <div className = "two-child description">
+          <div className = "four-child description">
           {
             (this.props.emotion && this.props.emotion === 'anger')
-            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>hmm... You seem angry!</a>
+              </div>
             : (this.props.emotion &&  this.props.emotion === 'contempt')
-            ? <img src='http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>Your face shows contempt</a>
+              </div>
             : (this.props.emotion &&  this.props.emotion === 'disgust')
-            ? <img src='https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>You look disgusted! What's the matter?</a>
+              </div>
             : (this.props.emotion &&  this.props.emotion === 'fear')
-            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>Oh! What made you fearful?</a>
+              </div>
             : (this.props.emotion &&  this.props.emotion === 'happiness')
-            ? <div><img src='https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png'width="200" height="200" ></img>
-            <h1 style={{color: 'white'}}><Link to='/camera'>You look happy!</Link></h1></div>
+            ? <div className='image'>
+              <img src='https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png'width="200" height="200" ></img>
+              <a href={this.emotionRedirect()}>I'm glad you're happy!</a>
+              </div>
             : (this.props.emotion &&  this.props.emotion === 'neutral')
-            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>Sorry! I don't see any emotions.</a>
+              </div>
             : (this.props.emotion && this.props.emotion === 'sadness')
-            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>Why so sad?</a>
+              </div>
             : (this.props.emotion && this.props.emotion === 'surprise')
-            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            ? <div className='image'>
+              <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+              <a href={this.emotionRedirect()}>What made you surprised?</a>
+              </div>
             : <h1>Please take a picture having human face!</h1>
           }
           </div>
           <div className="first" onClick={this.handlePage}></div>
-          <div >
+          <div className="four-child">
              <table>
                 <tr><th>Emotion Analysis</th></tr>
                 {this.props.scores && this.props.scores.map( (score) =>
                   <tr key={score[0]}>
-                    <td>{score[0]}</td> <td>{score[1]}% </td></tr>
+                    <td>{score[0]}</td>
+                    <td>{score[1]}%</td>
+                  </tr>
                 )
                 } </table>
           </div>

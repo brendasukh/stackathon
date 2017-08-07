@@ -1,24 +1,3 @@
-// body {
-//   font-family: sans-serif;
-
-//   a {
-//     text-decoration: none;
-//   }
-
-//   label {
-//     display: block;
-//   }
-
-//   nav a {
-//     display: inline-block;
-//     margin: 1em;
-//   }
-
-//   form div {
-//     margin: 1em;
-//     display: inline-block;
-//   }
-// }
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Oswald|Passion+One");
 body {
   margin:0;
@@ -26,12 +5,6 @@ body {
   font-family: 'Oswald', sans-serif;
   letter-spacing: 5px;
 }
-// .nav {
-//   display: flex;
-//   padding: 0 15px;
-//   position: fixed;
-//   bottom : 0px;
-// }
 h1{
   font-size: 50px;
   color: white;
@@ -252,7 +225,7 @@ ul {
 // }
 
 .camera-one {
-  background: url('https://petapixel.com/assets/uploads/2015/12/photomaking.jpg') no-repeat center center fixed;
+  background: url('https://m.gdpventure.com/sites/default/files/styles/large/public/article_images/selfie-72-dpi.jpg?itok=34mNxYko') no-repeat center center fixed;
   // background: url('https://wpblog.natgeocreative.com/wp-content/uploads/2017/07/Ira-Block_1005224.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -292,6 +265,11 @@ ul {
   flex-direction: row;
 
 }
+.four-child{
+  display:flex;
+  flex:1;
+  flex-direction: column;
+}
 .three-child{
   height:100vh;
   flex:1;
@@ -325,4 +303,10 @@ ul {
 }
 .two-child p{
   color:hotpink;
+}
+
+.image{
+  display:flex;
+  flex:1;
+  flex-direction: column;
 }
