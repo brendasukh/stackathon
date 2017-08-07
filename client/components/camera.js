@@ -14,6 +14,7 @@ class Camera extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
     this.styling = this.styling.bind(this);
+    this.emotionRedirect = this.emotionRedirect.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,28 @@ class Camera extends React.Component {
     context.clearRect(0, 0, 640, 480);
     this.props.updateEmotion();
     window.scrollTo(0, 0);
+  }
+  emotionRedirect(){
+    switch(this.props.emotion){
+      case 'anger':
+        return 'https://youtu.be/xFKe03Z8ASU'
+      case 'contempt':
+        return 'https://www.youtube.com/watch?v=UzPMMSKfKZQ'
+      case 'disgust':
+        return 'https://youtu.be/XyNlqQId-nk?t=39s'
+        // cat video
+      case 'sadness':
+        return 'https://www.youtube.com/watch?v=Jc8VaMQ5aOo'
+      case 'fear':
+        return 'https://www.youtube.com/watch?v=kFv4qYZQz1g'
+      case 'happiness':
+        return 'https://youtu.be/ZbZSe6N_BXs?t=17s'
+      case 'neutral':
+        return 'https://www.youtube.com/watch?v=Jc8VaMQ5aOo'
+      case 'surprise':
+        return 'https://www.youtube.com/watch?v=GRls1Gslc9Y'
+        //surprsing facts about earth'
+    }
   }
 
   styling(){
@@ -143,8 +166,10 @@ class Camera extends React.Component {
           </div>
           <div className="first" onClick={this.handlePage}></div>
           <div className="nav two-child">
-            <h1 style={{color: 'white'}}><Link to='/camera'>Your Results</Link></h1>
-              {this.props.emotion !=='nothing' ? <p>{this.props.emotion}</p> : <p>Please take a picture having human face! :) </p>}
+            <h1 style={{color: 'white'}}><a href='https://youtu.be/xFKe03Z8ASU'>Your Results</a></h1>
+              {
+                this.props.emotion !=='nothing' ? <a href={this.emotionRedirect()}>{this.props.emotion}</a> : <p>Please take a picture having human face! :) </p>
+              }
           </div>
         </section>
       </div>
