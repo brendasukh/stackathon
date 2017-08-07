@@ -14603,7 +14603,7 @@ var Camera = function (_React$Component) {
           return 'https://youtu.be/XyNlqQId-nk?t=39s';
         // cat video
         case 'sadness':
-          return 'https://www.youtube.com/watch?v=Jc8VaMQ5aOo';
+          return 'https://www.youtube.com/watch?v=RG9245wqd-Y';
         case 'fear':
           return 'https://www.youtube.com/watch?v=kFv4qYZQz1g';
         case 'happiness':
