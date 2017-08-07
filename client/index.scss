@@ -33,13 +33,14 @@ body {
 //   bottom : 0px;
 // }
 h1{
-  font-size: 200px;
+  font-size: 50px;
   color: white;
 }
+
 .nav h1 a{
   // color: #B16353;
-  color: white;
-  font-size: 50px;
+  color: hotpink;
+  font-size: 150px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -51,7 +52,7 @@ h1{
   border: 1px solid white;
   padding: 5px;
   color: white;
-  font-size: 50px;
+  font-size: 150px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px; }
@@ -76,19 +77,19 @@ ul li {
   display: inline;
   padding: 15px;
   color: white;
-  font-size: 30px;
+  font-size: 100px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
   padding: 5px;
   border: 1px solid transparent;
   transition: border 2s;
-  
+
   }
 
 ul li a {
   color: white;
-  font-size: 30px;
+  font-size: 100px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -100,11 +101,11 @@ ul li a:hover {
   border: 1px solid white;
   padding: 5px;
   color: white;
-  font-size: 30px;
+  font-size: 100px;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px; }
- 
+
 #page {
   position:absolute;
   top:0;
@@ -146,6 +147,7 @@ section > div {
   margin-left:-36px;
   cursor:pointer;
   font-size:400%;
+  color: hotpink;
 }
 .first:after {
   content:'▲';
@@ -156,25 +158,38 @@ select button:not(.next) {
 }
 
 .one {
-  background: url('https://static1.squarespace.com/static/55b46119e4b0840c30e12ee7/55b463b3e4b0b782bedef453/561b3e84e4b0b6c3337781a7/1453622764021/cambodiankids.jpg?format=1500w') no-repeat center center fixed; 
+  background: url('http://proof.nationalgeographic.com/files/2015/09/Nujoud_hires.jpg') no-repeat center center fixed;
+  // background: url('https://wpblog.natgeocreative.com/wp-content/uploads/2017/07/Ira-Block_1005224.jpg');
+  // background: url('https://d.ibtimes.co.uk/en/full/1612549/national-geographic-travel-photographer-year-contest.jpg?w=400');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  display:flex;
+  flex-direction: column;
+  flex:1;
+}
+.description{
+  color:white;
+  font-size: 50px;
+  text-transform: uppercase;
 }
 .two {
-   background: url('https://www.webtrafficthatworks.com/wp-content/uploads/2017/07/o-SMILING-AFRICAN-CHILDREN-facebook.jpg') no-repeat center center fixed; 
+   background: url('https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/11/05/636139783202690473265183389_iphone.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  flex-direction: row-reverse;
+  flex:1;
 }
 .three {
-  background: url('http://www.ctmuslimaat.org/wp-content/uploads/2017/04/The-Status-of-Children-in-Islam-Part-1-2-1024x683-1024x683.jpg') no-repeat center center fixed; 
+  background: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/kG-5Wkc/black-man-serious-face-portrait_n48nuvpve__M0010.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  flex-direction: row;
   flex: 1;
   width:100%;
   height:100vh;
@@ -188,7 +203,8 @@ select button:not(.next) {
   align-content: center;
 }
 .four {
-  background: url('https://lucazordan.files.wordpress.com/2014/03/lucazordan-tibet2.jpg') no-repeat center center fixed; 
+  // background: url('https://lucazordan.files.wordpress.com/2014/03/lucazordan-tibet2.jpg') no-repeat center center fixed;
+  background: white;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -216,3 +232,79 @@ ul {
 //   padding: 16px;
 
 // }
+
+.camera-one {
+  background: url('https://petapixel.com/assets/uploads/2015/12/photomaking.jpg') no-repeat center center fixed;
+  // background: url('https://wpblog.natgeocreative.com/wp-content/uploads/2017/07/Ira-Block_1005224.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display:flex;
+  flex-direction: column;
+  flex:1;
+}
+.description{
+  color:white;
+  font-size: 50px;
+  text-transform: uppercase;
+}
+.camera-two {
+  //  background: url('https://wallpaperscraft.com/image/central_park_panorama_night_new_york_lake_skyscrapers_city_manhattan_59276_1920x1080.jpg') no-repeat center center fixed;
+  background-color:white;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  flex-direction: row-reverse;
+  flex:1;
+}
+.camera-three {
+  // background: url('http://www.ctmuslimaat.org/wp-content/uploads/2017/04/The-Status-of-Children-in-Islam-Part-1-2-1024x683-1024x683.jpg') no-repeat center center fixed;
+  background-color:#6287A7;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  flex-direction: row;
+  flex: 1;
+  width:100%;
+  height:100vh;
+  justify-content: center;
+  flex-direction: row;
+
+}
+.three-child{
+  height:100vh;
+  flex:1;
+  width:100%;
+  align-content: center;
+}
+.camera-four {
+  background: white;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+// .video{
+//   border-style: solid;
+//   border-width: 340px 0px 78px;
+//   -moz-border-image: url(http://rotatemailer.com/iphone-horizontal.png) 247 27 27 0 stretch;
+//   -webkit-border-image: url(http://rotatemailer.com/iphone-horizontal.png) 247 27 27 0 stretch;
+//   -o-border-image: url(http://rotatemailer.com/iphone-horizontal.png) 247 27 27 0 stretch;
+//   border-image: url(http://rotatemailer.com/iphone-horizontal.png) 247 27 27 0 fill stretch;
+// }
+.video{
+  border-color:palevioletred;
+  border: 10px;
+  border-radius: 35px;
+}
+.canvas{
+  border-color:palevioletred;
+  border: 10px;
+  border-radius: 35px;
+}
+.two-child p{
+  color:hotpink;
+}
