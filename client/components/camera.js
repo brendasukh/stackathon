@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { saveImageContent } from '../store';
+import { uploadImageContent, updateEmotion } from '../store';
 
 
 class Camera extends React.Component {
@@ -11,13 +11,15 @@ class Camera extends React.Component {
       image: ''
     }
     this.takeVideo = this.takeVideo.bind(this);
-    this.clearCanvas = this.clearCanvas.bind(this);
+    // this.clearCanvas = this.clearCanvas.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handlePage = this.handlePage.bind(this);
     this.styling = this.styling.bind(this);
   }
 
   componentDidMount() {
     this.takeVideo();
+    $(window).animate({scrollTop: 0}, 800);
     this.styling();
   }
 
@@ -33,10 +35,9 @@ class Camera extends React.Component {
     }
   }
 
-  clearCanvas() {
-    var context = this.refs.canvas.getContext('2d');
-    context.drawImage(video, 0, 0, 0, 0);
-  }
+  // clearCanvas(context) {
+  //    context.clearRect(0, 0, 640, 480);
+  // }
 
 
   handleClick(evt) {
@@ -45,8 +46,15 @@ class Camera extends React.Component {
     var capturedImage = context.drawImage(video, 0, 0, 640, 480);
     var img = this.refs.canvas.toDataURL("image/jpeg");
     this.setState({image: img});
-    this.props.saveImage(img);
-    this.clearCanvas();
+    this.props.uploadImage(img);
+  }
+
+  handlePage(evt){
+    evt.preventDefault();
+    var context = this.refs.canvas.getContext('2d');
+    context.clearRect(0, 0, 640, 480);
+    this.props.updateEmotion();
+
   }
 
   styling(){
@@ -62,26 +70,42 @@ class Camera extends React.Component {
         return;
       }
 
-      // Prevent firing simultaneously.
-      page.onclick = '';
-      var self = e.target.parentNode;
-      var offset = self.getBoundingClientRect();
-      var scroll = self.offsetTop;
+      if(e.target.className === 'first'){
+              // Prevent firing simultaneously.
+            page.onclick = '';
+            var self = e.target.parentNode;
+            //returns the size of an element and its position relative to the viewport.
+            var offset = self.getBoundingClientRect();
+            //returns the distance of the current element relative to the top of the offsetParent node.
+            var scroll = self.offsetTop;
+            console.log("self", self, offset, scroll);
+      }
+      else{
+              // Prevent firing simultaneously.
+            page.onclick = '';
+            var self = e.target.parentNode;
+            //returns the size of an element and its position relative to the viewport.
+            var offset = self.getBoundingClientRect();
+            //returns the distance of the current element relative to the top of the offsetParent node.
+            var scroll = self.offsetTop;
 
-      // CSS Transition slide.
-      page.style.top = (-offset.height-offset.top) + 'px';
+            // CSS Transition slide.
+            page.style.top = (-offset.height-offset.top) + 'px';
 
-      setTimeout(function () {
-        // Reposition the real scrollbar.
-        page.style.transition = 'none';
-        page.style.top = '';
-        window.scrollTo(0, offset.height+scroll);
-        page.style.transition = transition;
-        // Reattach event.
-        page.onclick = slideDown;
+            setTimeout(function () {
+              // Reposition the real scrollbar.
+              page.style.transition = 'none';
+              page.style.top = '';
+              window.scrollTo(0, offset.height+scroll);
+              page.style.transition = transition;
+              // Reattach event.
+              page.onclick = slideDown;
 
-        // This timeout length should match the CSS animation time (.8s).
-      }, 800);
+              // This timeout length should match the CSS animation time (.8s).
+            }, 800);
+
+      }
+
     }
   }
 
@@ -112,8 +136,11 @@ class Camera extends React.Component {
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
             : (this.props.emotion && this.props.emotion === 'sadness')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png' width="200" height="200"></img>
-            : <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            : (this.props.emotion && this.props.emotion === 'surprise')
+            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            : <h4>Please take a picture having human face!</h4>
           }
+          <div className="first" onClick={this.handlePage}></div>
         </section>
       </div>
 
@@ -124,8 +151,11 @@ const mapStateToProps = ({ emotion }) => ({ emotion })
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveImage(imageContent) {
-      dispatch(saveImageContent(imageContent));
+    uploadImage(imageContent) {
+      dispatch(uploadImageContent(imageContent));
+    },
+    updateEmotion(){
+      dispatch(updateEmotion('nothing'));
     }
   }
 }

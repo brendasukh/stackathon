@@ -56,6 +56,18 @@ section > div {
   content:'▼';
 }
 
+.first {
+  position:absolute;
+  bottom:0;
+  left:50%;
+  margin-left:-36px;
+  cursor:pointer;
+  font-size:400%;
+}
+.first:after {
+  content:'▲';
+}
+
 select button:not(.next) {
     content: '▼';
 }
