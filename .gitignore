@@ -1,7 +1,7 @@
 node_modules
 public/images
-public/bundle.js
 public/bundle.js.map
+public/bundle.js
 secrets.js
 .DS_Store
 npm-debug.log
