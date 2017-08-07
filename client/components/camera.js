@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { uploadImageContent, updateEmotion } from '../store';
 
@@ -11,7 +11,6 @@ class Camera extends React.Component {
       image: ''
     }
     this.takeVideo = this.takeVideo.bind(this);
-    // this.clearCanvas = this.clearCanvas.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
     this.styling = this.styling.bind(this);
@@ -19,7 +18,6 @@ class Camera extends React.Component {
 
   componentDidMount() {
     this.takeVideo();
-    $(window).animate({scrollTop: 0}, 800);
     this.styling();
   }
 
@@ -35,11 +33,6 @@ class Camera extends React.Component {
     }
   }
 
-  // clearCanvas(context) {
-  //    context.clearRect(0, 0, 640, 480);
-  // }
-
-
   handleClick(evt) {
     var context = this.refs.canvas.getContext('2d');
     var video = this.refs.video;
@@ -54,7 +47,7 @@ class Camera extends React.Component {
     var context = this.refs.canvas.getContext('2d');
     context.clearRect(0, 0, 640, 480);
     this.props.updateEmotion();
-
+    window.scrollTo(0, 0);
   }
 
   styling(){
@@ -69,43 +62,27 @@ class Camera extends React.Component {
       if (e.target.className !== 'next') {
         return;
       }
+      // Prevent firing simultaneously.
+      page.onclick = '';
+      var self = e.target.parentNode;
+      //returns the size of an element and its position relative to the viewport.
+      var offset = self.getBoundingClientRect();
+      //returns the distance of the current element relative to the top of the offsetParent node.
+      var scroll = self.offsetTop;
 
-      if(e.target.className === 'first'){
-              // Prevent firing simultaneously.
-            page.onclick = '';
-            var self = e.target.parentNode;
-            //returns the size of an element and its position relative to the viewport.
-            var offset = self.getBoundingClientRect();
-            //returns the distance of the current element relative to the top of the offsetParent node.
-            var scroll = self.offsetTop;
-            console.log("self", self, offset, scroll);
-      }
-      else{
-              // Prevent firing simultaneously.
-            page.onclick = '';
-            var self = e.target.parentNode;
-            //returns the size of an element and its position relative to the viewport.
-            var offset = self.getBoundingClientRect();
-            //returns the distance of the current element relative to the top of the offsetParent node.
-            var scroll = self.offsetTop;
+      // CSS Transition slide.
+      page.style.top = (-offset.height-offset.top) + 'px';
 
-            // CSS Transition slide.
-            page.style.top = (-offset.height-offset.top) + 'px';
-
-            setTimeout(function () {
-              // Reposition the real scrollbar.
-              page.style.transition = 'none';
-              page.style.top = '';
-              window.scrollTo(0, offset.height+scroll);
-              page.style.transition = transition;
-              // Reattach event.
-              page.onclick = slideDown;
-
+      setTimeout(function () {
+          // Reposition the real scrollbar.
+          page.style.transition = 'none';
+          page.style.top = '';
+          window.scrollTo(0, offset.height+scroll);
+          page.style.transition = transition;
+          // Reattach event.
+          page.onclick = slideDown;
               // This timeout length should match the CSS animation time (.8s).
-            }, 800);
-
-      }
-
+      }, 800);
     }
   }
 
@@ -113,14 +90,26 @@ class Camera extends React.Component {
     return (
       <div id="page" ref="page">
          <section className="one">
-           <video id="video" ref="video" width="640" height="480" autoPlay></video>
-          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
+           <div className="nav">
+                <h1><Link to='/'> :) Emotiva</Link></h1>
+                <ul className="nav-links">
+                    <li><Link to="/">TRY IT YOURSELF</Link></li>
+                    <li><Link to="/">EMOJIFY</Link></li>
+                </ul>
+            </div>
+            <h1>Emotiva</h1>
+            <div className="next"></div>
         </section>
         <section className="two">
+          <video id="video" ref="video" width="640" height="480" autoPlay></video>
+          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
+        </section>
+        <section className="three">
           <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>
           <div className="next"></div>
         </section>
-        <section className="three">
+        <section className="four">
+          <div className='three-child'>
           {
             (this.props.emotion && this.props.emotion === 'anger')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
@@ -138,8 +127,9 @@ class Camera extends React.Component {
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png' width="200" height="200"></img>
             : (this.props.emotion && this.props.emotion === 'surprise')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
-            : <h4>Please take a picture having human face!</h4>
+            : <h1>Please take a picture having human face!</h1>
           }
+          </div>
           <div className="first" onClick={this.handlePage}></div>
         </section>
       </div>

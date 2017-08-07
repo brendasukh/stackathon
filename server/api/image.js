@@ -28,23 +28,22 @@ var imgur = require('imgur');
 
 router.post('/', (req, res, next) => {
   const data= req.body.image.replace(/^data:image\/(png|jpeg);base64,/, "");
-  const buf = new Buffer(data, 'base64');
-  const binaryBuffer = new Buffer(buf, 'binary');
+  // const buf = new Buffer(data, 'base64');
+  // const binaryBuffer = new Buffer(buf, 'binary');
   imgur.uploadBase64(data)
   .then(function (json) {
-    link = json.data.link;
-    options.body.url=link
+    var link = json.data.link;
+    options.body.url = link
     return request(options)
   })
   .then((apiResult) => {
     return anotherOne(apiResult[0].scores)
   })
   .then((emotion) => {
-    console.log(emotion.key + ": " +emotion.value);
     res.send(emotion.key);
   })
   .catch( (err) => {
-    console.log("Api fetch failed", err);
+    console.error("Api fetch failed", err);
     res.send('nothing')
   });
 })

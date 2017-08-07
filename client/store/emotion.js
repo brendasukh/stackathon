@@ -1,17 +1,14 @@
 import axios from 'axios'
-import history from '../history'
 
 /**
  * ACTION TYPES
  */
 const GET_EMOTION = 'GET_EMOTION';
-// const UPDATE = 'UPDATE';
 
 /**
  * ACTION CREATORS
  */
 const getEmotion = emotion => ({ type: GET_EMOTION, emotion });
-// const update = (emotion) => ({type: UPDATE}, emotion);
 
 /**
  * THUNK CREATORS
@@ -36,8 +33,6 @@ export default function (state = '', action) {
     switch (action.type) {
         case GET_EMOTION:
             return action.emotion
-        // case UPDATE:
-        //     return action.emotion;
         default:
             return state;
     }
