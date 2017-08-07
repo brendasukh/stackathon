@@ -88,28 +88,39 @@ class Camera extends React.Component {
   render() {
     return (
       <div id="page" ref="page">
-         <section className="one">
-           <div className="nav">
-                <h1><Link to='/'> :) Emotiva</Link></h1>
+         <section className="camera-one">
+            <h1 className = "one-child description">check this out of you want to see magic happen</h1>
+            <div className="nav one-child">
+                <h1 style={{color: 'pink'}}><Link to='/camera'>analyze your mood</Link></h1>
                 <ul className="nav-links">
-                    <li><Link to="/">TRY IT YOURSELF</Link></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/">EMOJIFY</Link></li>
                 </ul>
             </div>
-            <h1>Emotiva</h1>
-            <div className="next"></div>
-        </section>
-        <section className="two">
-          <video id="video" ref="video" width="640" height="480" autoPlay></video>
-          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
-        </section>
-        <section className="three">
-          <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>
           <div className="next"></div>
         </section>
-        <section className="four">
-          <div className='three-child'>
-          {
+        <section className="camera-two">
+          <h1 className = "two-child description">          
+            <video className="video" id="video" ref="video" width="640" height="480" autoPlay></video>
+            </h1>
+            <div className="nav two-child">
+                <h1 style={{color: 'pink'}}><Link to='/camera'>How are you feeling?</Link></h1>
+            </div>
+
+          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
+        </section>
+        <section className="camera-three">
+            <h1 className = "two-child description">          
+            <canvas className="canvas" id="canvas" ref="canvas" width="640" height="480"></canvas>
+            </h1>
+            <div className="nav two-child">
+                <h1 style={{color: 'white'}}><Link to='/camera'>Your picture</Link></h1>
+            </div>
+          <div className="next"></div>
+        </section>
+        <section className="camera-four">
+            <h1 className = "two-child description">          
+                      {
             (this.props.emotion && this.props.emotion === 'anger')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
             : (this.props.emotion &&  this.props.emotion === 'contempt')
@@ -127,12 +138,12 @@ class Camera extends React.Component {
             : (this.props.emotion && this.props.emotion === 'surprise')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
             : <h1>waiting</h1>
-          }
-
-          </div>
-          <div className='three-child'>
-            <h1>YOUR RESULTS</h1>
-          </div>
+            }
+            </h1>
+            <div className="nav two-child">
+                <h1 style={{color: 'white'}}><Link to='/camera'>Your Results</Link></h1>
+                {this.props.emotion !=='Failure' ? <p>{this.props.emotion}</p> : <p>take a picture! :) </p>}
+            </div>
           <div className="next"></div>
         </section>
       </div>

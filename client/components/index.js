@@ -4,5 +4,5 @@
  * having to figure out which file they belong to!
  */
 
-export {default as Camera} from './camera'
-
+export {Camera} from './camera'
+export {Home} from './home'

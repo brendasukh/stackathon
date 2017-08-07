@@ -4,7 +4,8 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Camera} from './components'
+import Home from './components/home'
+import Camera from './components/camera'
 
 /**
  * COMPONENT
@@ -12,7 +13,10 @@ import {Camera} from './components'
 export const Routes = () => {
   return (
       <Router history={history}>
-        <Route exact path='/' component={Camera} />
+        <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/camera' component={Camera} />
+        </Switch>
       </Router>
     )
 }

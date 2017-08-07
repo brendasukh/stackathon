@@ -13561,7 +13561,13 @@ var _history = __webpack_require__(42);
 
 var _history2 = _interopRequireDefault(_history);
 
-var _components = __webpack_require__(146);
+var _home = __webpack_require__(355);
+
+var _home2 = _interopRequireDefault(_home);
+
+var _camera = __webpack_require__(145);
+
+var _camera2 = _interopRequireDefault(_camera);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13572,7 +13578,12 @@ var Routes = exports.Routes = function Routes() {
   return _react2.default.createElement(
     _reactRouter.Router,
     { history: _history2.default },
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _components.Camera })
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/camera', component: _camera2.default })
+    )
   );
 };
 
@@ -14581,17 +14592,22 @@ var Camera = function (_React$Component) {
         { id: 'page', ref: 'page' },
         _react2.default.createElement(
           'section',
-          { className: 'one' },
+          { className: 'camera-one' },
+          _react2.default.createElement(
+            'h1',
+            { className: 'one-child description' },
+            'check this out of you want to see magic happen'
+          ),
           _react2.default.createElement(
             'div',
-            { className: 'nav' },
+            { className: 'nav one-child' },
             _react2.default.createElement(
               'h1',
-              null,
+              { style: { color: 'pink' } },
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/' },
-                ' :) Emotiva'
+                { to: '/camera' },
+                'analyze your mood'
               )
             ),
             _react2.default.createElement(
@@ -14603,7 +14619,7 @@ var Camera = function (_React$Component) {
                 _react2.default.createElement(
                   _reactRouterDom.Link,
                   { to: '/' },
-                  'TRY IT YOURSELF'
+                  'Home'
                 )
               ),
               _react2.default.createElement(
@@ -14617,17 +14633,29 @@ var Camera = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Emotiva'
-          ),
           _react2.default.createElement('div', { className: 'next' })
         ),
         _react2.default.createElement(
           'section',
-          { className: 'two' },
-          _react2.default.createElement('video', { id: 'video', ref: 'video', width: '640', height: '480', autoPlay: true }),
+          { className: 'camera-two' },
+          _react2.default.createElement(
+            'h1',
+            { className: 'two-child description' },
+            _react2.default.createElement('video', { className: 'video', id: 'video', ref: 'video', width: '640', height: '480', autoPlay: true })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'nav two-child' },
+            _react2.default.createElement(
+              'h1',
+              { style: { color: 'pink' } },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/camera' },
+                'How are you feeling?'
+              )
+            )
+          ),
           _react2.default.createElement(
             'button',
             { className: 'next', id: 'snap', onClick: this.handleClick },
@@ -14640,16 +14668,33 @@ var Camera = function (_React$Component) {
         ),
         _react2.default.createElement(
           'section',
-          { className: 'three' },
-          _react2.default.createElement('canvas', { id: 'canvas', ref: 'canvas', width: '640', height: '480' }),
+          { className: 'camera-three' },
+          _react2.default.createElement(
+            'h1',
+            { className: 'two-child description' },
+            _react2.default.createElement('canvas', { className: 'canvas', id: 'canvas', ref: 'canvas', width: '640', height: '480' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'nav two-child' },
+            _react2.default.createElement(
+              'h1',
+              { style: { color: 'white' } },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/camera' },
+                'Your picture'
+              )
+            )
+          ),
           _react2.default.createElement('div', { className: 'next' })
         ),
         _react2.default.createElement(
           'section',
-          { className: 'four' },
+          { className: 'camera-four' },
           _react2.default.createElement(
-            'div',
-            { className: 'three-child' },
+            'h1',
+            { className: 'two-child description' },
             this.props.emotion && this.props.emotion === 'anger' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'contempt' ? _react2.default.createElement('img', { src: 'http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'disgust' ? _react2.default.createElement('img', { src: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'fear' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'happiness' ? _react2.default.createElement('img', { src: 'https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'neutral' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'sadness' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'surprise' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : _react2.default.createElement(
               'h1',
               null,
@@ -14658,11 +14703,24 @@ var Camera = function (_React$Component) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'three-child' },
+            { className: 'nav two-child' },
             _react2.default.createElement(
               'h1',
+              { style: { color: 'white' } },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/camera' },
+                'Your Results'
+              )
+            ),
+            this.props.emotion !== 'Failure' ? _react2.default.createElement(
+              'p',
               null,
-              'YOUR RESULTS'
+              this.props.emotion
+            ) : _react2.default.createElement(
+              'p',
+              null,
+              'take a picture! :) '
             )
           ),
           _react2.default.createElement('div', { className: 'next' })
@@ -14689,28 +14747,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Camera));
 
 /***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _camera = __webpack_require__(145);
-
-Object.defineProperty(exports, 'Camera', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_camera).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
+/* 146 */,
 /* 147 */,
 /* 148 */,
 /* 149 */
@@ -15830,7 +15867,7 @@ exports = module.exports = __webpack_require__(155)();
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Oswald|Passion+One);", ""]);
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0;\n  height: 100%;\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px; }\n\nh1 {\n  font-size: 200px;\n  color: white; }\n\n.nav h1 a {\n  color: white;\n  font-size: 50px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\n.nav h1 a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 50px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\nh2 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-size: 26px;\n  margin-bottom: 0px; }\n\nh3 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  margin-bottom: 0px; }\n\nul {\n  padding-top: 12px; }\n\nul li {\n  display: inline;\n  padding: 15px;\n  color: white;\n  font-size: 30px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a {\n  color: white;\n  font-size: 30px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 30px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px;\n  font-weight: bold;\n  font-size: 8vw;\n  color: white;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background: url(\"https://static1.squarespace.com/static/55b46119e4b0840c30e12ee7/55b463b3e4b0b782bedef453/561b3e84e4b0b6c3337781a7/1453622764021/cambodiankids.jpg?format=1500w\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.two {\n  background: url(\"https://www.webtrafficthatworks.com/wp-content/uploads/2017/07/o-SMILING-AFRICAN-CHILDREN-facebook.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.three {\n  background: url(\"http://www.ctmuslimaat.org/wp-content/uploads/2017/04/The-Status-of-Children-in-Islam-Part-1-2-1024x683-1024x683.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.four {\n  background: url(\"https://lucazordan.files.wordpress.com/2014/03/lucazordan-tibet2.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\nimg {\n  align-self: center; }\n\n.nav h1 {\n  top: 0;\n  height: 100%; }\n\nul {\n  top: 0;\n  list-style-type: none;\n  margin: 0;\n  padding: 0; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0;\n  height: 100%;\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px; }\n\nh1 {\n  font-size: 50px;\n  color: white; }\n\n.nav h1 a {\n  color: hotpink;\n  font-size: 150px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\n.nav h1 a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 150px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\nh2 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-size: 26px;\n  margin-bottom: 0px; }\n\nh3 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  margin-bottom: 0px; }\n\nul {\n  padding-top: 12px; }\n\nul li {\n  display: inline;\n  padding: 15px;\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a {\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px;\n  font-weight: bold;\n  font-size: 8vw;\n  color: white;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background: url(\"http://proof.nationalgeographic.com/files/2015/09/Nujoud_hires.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  flex: 1; }\n\n.description {\n  color: white;\n  font-size: 50px;\n  text-transform: uppercase; }\n\n.two {\n  background: url(\"https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/11/05/636139783202690473265183389_iphone.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row-reverse;\n  flex: 1; }\n\n.three {\n  background: url(\"https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/kG-5Wkc/black-man-serious-face-portrait_n48nuvpve__M0010.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.four {\n  background: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\nimg {\n  align-self: center; }\n\n.nav h1 {\n  top: 0;\n  height: 100%; }\n\nul {\n  top: 0;\n  list-style-type: none;\n  margin: 0;\n  padding: 0; }\n\n.camera-one {\n  background: url(\"https://petapixel.com/assets/uploads/2015/12/photomaking.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  flex: 1; }\n\n.description {\n  color: white;\n  font-size: 50px;\n  text-transform: uppercase; }\n\n.camera-two {\n  background-color: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row-reverse;\n  flex: 1; }\n\n.camera-three {\n  background-color: #6287A7;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center;\n  flex-direction: row; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.camera-four {\n  background: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.video {\n  border-color: palevioletred;\n  border: 10px;\n  border-radius: 35px; }\n\n.canvas {\n  border-color: palevioletred;\n  border: 10px;\n  border-radius: 35px; }\n\n.two-child p {\n  color: hotpink; }\n", ""]);
 
 // exports
 
@@ -31297,6 +31334,195 @@ var saveImageContent = exports.saveImageContent = function saveImageContent(imag
 /**
  * REDUCER
  */
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(64);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_React$Component) {
+    _inherits(Home, _React$Component);
+
+    function Home() {
+        _classCallCheck(this, Home);
+
+        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+        _this.styling = _this.styling.bind(_this);
+        return _this;
+    }
+
+    _createClass(Home, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.styling();
+        }
+    }, {
+        key: 'styling',
+        value: function styling() {
+            var page = this.refs.page;
+            // This transition can be defined in the CSS if preferred.
+            var transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
+            page.style.transition = transition;
+            page.onclick = slideDown;
+
+            function slideDown(e) {
+                // Delegate.
+                if (e.target.className !== 'next') {
+                    return;
+                }
+
+                // Prevent firing simultaneously.
+                page.onclick = '';
+                var self = e.target.parentNode;
+                var offset = self.getBoundingClientRect();
+                var scroll = self.offsetTop;
+
+                // CSS Transition slide.
+                page.style.top = -offset.height - offset.top + 'px';
+
+                setTimeout(function () {
+                    // Reposition the real scrollbar.
+                    page.style.transition = 'none';
+                    page.style.top = '';
+                    window.scrollTo(0, offset.height + scroll);
+                    page.style.transition = transition;
+                    // Reattach event.
+                    page.onclick = slideDown;
+
+                    // This timeout length should match the CSS animation time (.8s).
+                }, 800);
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { id: 'page', ref: 'page' },
+                _react2.default.createElement(
+                    'section',
+                    { className: 'one' },
+                    _react2.default.createElement(
+                        'h1',
+                        { className: 'one-child description' },
+                        'bringing together human emotion and technology'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'nav one-child' },
+                        _react2.default.createElement(
+                            'h1',
+                            { style: { color: 'pink' } },
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: '/' },
+                                '\uD83D\uDC69\uD83C\uDFFB\u200D\uD83D\uDCBB Emotiva'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'nav-links' },
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/camera' },
+                                    'TRY IT YOURSELF'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/' },
+                                    'EMOJIFY'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement('div', { className: 'next' })
+                ),
+                _react2.default.createElement(
+                    'section',
+                    { className: 'two' },
+                    _react2.default.createElement(
+                        'h1',
+                        { className: 'two-child description' },
+                        'we capture your image and use Microsoft\'s Emotion Detection API to give you suggestions based on your mood'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'nav' },
+                        _react2.default.createElement(
+                            'h1',
+                            { className: 'two-child', style: { color: 'pink' } },
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: '/' },
+                                'HOW IT WORKS'
+                            )
+                        ),
+                        _react2.default.createElement('ul', { className: 'nav-links' })
+                    ),
+                    _react2.default.createElement('div', { className: 'next' })
+                ),
+                _react2.default.createElement(
+                    'section',
+                    { className: 'three' },
+                    _react2.default.createElement(
+                        'h1',
+                        { className: 'two-child description' },
+                        'our mood controls who we are and how we behave and is a big part of our identity'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'nav' },
+                        _react2.default.createElement(
+                            'h1',
+                            { className: 'two-child', style: { color: 'pink' } },
+                            _react2.default.createElement(
+                                _reactRouterDom.Link,
+                                { to: '/' },
+                                'Why Should You Care'
+                            )
+                        ),
+                        _react2.default.createElement('ul', { className: 'nav-links' })
+                    ),
+                    _react2.default.createElement('div', { className: 'next' })
+                )
+            );
+        }
+    }]);
+
+    return Home;
+}(_react2.default.Component);
+
+exports.default = Home;
 
 /***/ })
 /******/ ]);
