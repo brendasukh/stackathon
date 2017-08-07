@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveImageContent } from '../store';
 
@@ -89,14 +89,26 @@ class Camera extends React.Component {
     return (
       <div id="page" ref="page">
          <section className="one">
-           <video id="video" ref="video" width="640" height="480" autoPlay></video>
-          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
+           <div className="nav">
+                <h1><Link to='/'> :) Emotiva</Link></h1>
+                <ul className="nav-links">
+                    <li><Link to="/">TRY IT YOURSELF</Link></li>
+                    <li><Link to="/">EMOJIFY</Link></li>
+                </ul>
+            </div>
+            <h1>Emotiva</h1>
+            <div className="next"></div>
         </section>
         <section className="two">
+          <video id="video" ref="video" width="640" height="480" autoPlay></video>
+          <button className="next" id="snap" onClick={this.handleClick}><span className="glyphicon">&#xe046;</span></button>
+        </section>
+        <section className="three">
           <canvas id="canvas" ref="canvas" width="640" height="480"></canvas>
           <div className="next"></div>
         </section>
-        <section className="three">
+        <section className="four">
+          <div className='three-child'>
           {
             (this.props.emotion && this.props.emotion === 'anger')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
@@ -112,8 +124,16 @@ class Camera extends React.Component {
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
             : (this.props.emotion && this.props.emotion === 'sadness')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png' width="200" height="200"></img>
-            : <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            : (this.props.emotion && this.props.emotion === 'surprise')
+            ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
+            : <h1>waiting</h1>
           }
+
+          </div>
+          <div className='three-child'>
+            <h1>YOUR RESULTS</h1>
+          </div>
+          <div className="next"></div>
         </section>
       </div>
 

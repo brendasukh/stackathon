@@ -14582,6 +14582,51 @@ var Camera = function (_React$Component) {
         _react2.default.createElement(
           'section',
           { className: 'one' },
+          _react2.default.createElement(
+            'div',
+            { className: 'nav' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/' },
+                ' :) Emotiva'
+              )
+            ),
+            _react2.default.createElement(
+              'ul',
+              { className: 'nav-links' },
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/' },
+                  'TRY IT YOURSELF'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/' },
+                  'EMOJIFY'
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Emotiva'
+          ),
+          _react2.default.createElement('div', { className: 'next' })
+        ),
+        _react2.default.createElement(
+          'section',
+          { className: 'two' },
           _react2.default.createElement('video', { id: 'video', ref: 'video', width: '640', height: '480', autoPlay: true }),
           _react2.default.createElement(
             'button',
@@ -14595,14 +14640,32 @@ var Camera = function (_React$Component) {
         ),
         _react2.default.createElement(
           'section',
-          { className: 'two' },
+          { className: 'three' },
           _react2.default.createElement('canvas', { id: 'canvas', ref: 'canvas', width: '640', height: '480' }),
           _react2.default.createElement('div', { className: 'next' })
         ),
         _react2.default.createElement(
           'section',
-          { className: 'three' },
-          this.props.emotion && this.props.emotion === 'anger' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'contempt' ? _react2.default.createElement('img', { src: 'http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'disgust' ? _react2.default.createElement('img', { src: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'fear' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'happiness' ? _react2.default.createElement('img', { src: 'https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'neutral' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'sadness' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png', width: '200', height: '200' }) : _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' })
+          { className: 'four' },
+          _react2.default.createElement(
+            'div',
+            { className: 'three-child' },
+            this.props.emotion && this.props.emotion === 'anger' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'contempt' ? _react2.default.createElement('img', { src: 'http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'disgust' ? _react2.default.createElement('img', { src: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'fear' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'happiness' ? _react2.default.createElement('img', { src: 'https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'neutral' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'sadness' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'surprise' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : _react2.default.createElement(
+              'h1',
+              null,
+              'waiting'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'three-child' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'YOUR RESULTS'
+            )
+          ),
+          _react2.default.createElement('div', { className: 'next' })
         )
       );
     }
@@ -15764,10 +15827,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 exports = module.exports = __webpack_require__(155)();
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Oswald|Passion+One);", ""]);
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: Helvetica,Sans-serif;\n  font-weight: bold;\n  font-size: 8vw;\n  color: #FFF;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background-color: lightblue; }\n\n.two {\n  background-color: lightsalmon; }\n\n.three {\n  background-color: lightgoldenrodyellow; }\n\n.four {\n  background-color: lightseagreen; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0;\n  height: 100%;\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px; }\n\nh1 {\n  font-size: 200px;\n  color: white; }\n\n.nav h1 a {\n  color: white;\n  font-size: 50px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\n.nav h1 a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 50px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\nh2 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-size: 26px;\n  margin-bottom: 0px; }\n\nh3 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  margin-bottom: 0px; }\n\nul {\n  padding-top: 12px; }\n\nul li {\n  display: inline;\n  padding: 15px;\n  color: white;\n  font-size: 30px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a {\n  color: white;\n  font-size: 30px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 30px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px;\n  font-weight: bold;\n  font-size: 8vw;\n  color: white;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background: url(\"https://static1.squarespace.com/static/55b46119e4b0840c30e12ee7/55b463b3e4b0b782bedef453/561b3e84e4b0b6c3337781a7/1453622764021/cambodiankids.jpg?format=1500w\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.two {\n  background: url(\"https://www.webtrafficthatworks.com/wp-content/uploads/2017/07/o-SMILING-AFRICAN-CHILDREN-facebook.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.three {\n  background: url(\"http://www.ctmuslimaat.org/wp-content/uploads/2017/04/The-Status-of-Children-in-Islam-Part-1-2-1024x683-1024x683.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.four {\n  background: url(\"https://lucazordan.files.wordpress.com/2014/03/lucazordan-tibet2.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\nimg {\n  align-self: center; }\n\n.nav h1 {\n  top: 0;\n  height: 100%; }\n\nul {\n  top: 0;\n  list-style-type: none;\n  margin: 0;\n  padding: 0; }\n", ""]);
 
 // exports
 
