@@ -205,7 +205,7 @@ ul {
 // }
 
 .camera-one {
-  background: url('https://petapixel.com/assets/uploads/2015/12/photomaking.jpg') no-repeat center center fixed;
+  background: url('https://m.gdpventure.com/sites/default/files/styles/large/public/article_images/selfie-72-dpi.jpg?itok=34mNxYko') no-repeat center center fixed;
   // background: url('https://wpblog.natgeocreative.com/wp-content/uploads/2017/07/Ira-Block_1005224.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -244,6 +244,11 @@ ul {
   justify-content: center;
   flex-direction: row;
 
+}
+.four-child{
+  display:flex;
+  flex:1;
+  flex-direction: column;
 }
 .three-child{
   height:100vh;

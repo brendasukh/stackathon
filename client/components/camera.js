@@ -143,7 +143,7 @@ class Camera extends React.Component {
           <div className="next"></div>
         </section>
         <section className="camera-four">
-          <div className = "two-child description">
+          <div className = "four-child description">
           {
             (this.props.emotion && this.props.emotion === 'anger')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png' width="200" height="200"></img>
@@ -163,13 +163,13 @@ class Camera extends React.Component {
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
             : <h1>Please take a picture having human face!</h1>
           }
-          </div>
-          <div className="first" onClick={this.handlePage}></div>
-          <div className="nav two-child">
-            <h1 style={{color: 'white'}}><a href='https://youtu.be/xFKe03Z8ASU'>Your Results</a></h1>
               {
                 this.props.emotion !=='nothing' ? <a href={this.emotionRedirect()}>{this.props.emotion}</a> : <p>Please take a picture having human face! :) </p>
               }
+          </div>
+          <div className="first" onClick={this.handlePage}></div>
+          <div className="nav four-child">
+            <h1 style={{color: 'white'}}><a href='https://youtu.be/xFKe03Z8ASU'>Your Results</a></h1>
           </div>
         </section>
       </div>
