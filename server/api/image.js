@@ -28,8 +28,7 @@ var imgur = require('imgur');
 
 router.post('/', (req, res, next) => {
   const data= req.body.image.replace(/^data:image\/(png|jpeg);base64,/, "");
-  // const buf = new Buffer(data, 'base64');
-  // const binaryBuffer = new Buffer(buf, 'binary');
+  var scores;
   imgur.uploadBase64(data)
   .then(function (json) {
     var link = json.data.link;
@@ -37,10 +36,20 @@ router.post('/', (req, res, next) => {
     return request(options)
   })
   .then((apiResult) => {
+    scores = apiResult[0].scores;
     return anotherOne(apiResult[0].scores)
   })
   .then((emotion) => {
-    res.send(emotion.key);
+    // console.log(scores);
+    var newScores = {};
+    for (let key in scores){
+      scores[key] = scores[key] * 100;
+      if (scores[key] > 1){
+        newScores[key] = scores[key].toFixed(2);
+      }
+    }
+    var result = [newScores, emotion.key]
+    res.send(result);
   })
   .catch( (err) => {
     console.error("Api fetch failed", err);

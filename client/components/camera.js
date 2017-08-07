@@ -87,6 +87,7 @@ class Camera extends React.Component {
   }
 
   render() {
+    console.log("scores", this.props.scores);
     return (
       <div id="page" ref="page">
          <section className="camera-one">
@@ -131,7 +132,8 @@ class Camera extends React.Component {
             : (this.props.emotion &&  this.props.emotion === 'fear')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png' width="200" height="200"></img>
             : (this.props.emotion &&  this.props.emotion === 'happiness')
-            ? <img src='https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png'width="200" height="200" ></img>
+            ? <div><img src='https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png'width="200" height="200" ></img>
+            <h1 style={{color: 'white'}}><Link to='/camera'>You look happy!</Link></h1></div>
             : (this.props.emotion &&  this.props.emotion === 'neutral')
             ? <img src='https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png' width="200" height="200"></img>
             : (this.props.emotion && this.props.emotion === 'sadness')
@@ -142,9 +144,14 @@ class Camera extends React.Component {
           }
           </div>
           <div className="first" onClick={this.handlePage}></div>
-          <div className="nav two-child">
-            <h1 style={{color: 'white'}}><Link to='/camera'>Your Results</Link></h1>
-              {this.props.emotion !=='nothing' ? <p>{this.props.emotion}</p> : <p>Please take a picture having human face! :) </p>}
+          <div >
+             <table>
+                <tr><th>Emotion Analysis</th></tr>
+                {this.props.scores && this.props.scores.map( (score) =>
+                  <tr key={score[0]}>
+                    <td>{score[0]}</td> <td>{score[1]}% </td></tr>
+                )
+                } </table>
           </div>
         </section>
       </div>
@@ -152,7 +159,7 @@ class Camera extends React.Component {
     )
   }
 }
-const mapStateToProps = ({ emotion }) => ({ emotion })
+const mapStateToProps = ({ emotion, scores }) => ({ emotion, scores })
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -160,7 +167,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(uploadImageContent(imageContent));
     },
     updateEmotion(){
-      dispatch(updateEmotion('nothing'));
+      dispatch(updateEmotion('nothing', []));
     }
   }
 }

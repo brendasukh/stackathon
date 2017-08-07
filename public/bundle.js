@@ -7869,6 +7869,18 @@ Object.keys(_emotion).forEach(function (key) {
   });
 });
 
+var _scores = __webpack_require__(305);
+
+Object.keys(_scores).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _scores[key];
+    }
+  });
+});
+
 var _redux = __webpack_require__(121);
 
 var _reduxLogger = __webpack_require__(293);
@@ -7883,9 +7895,11 @@ var _user2 = _interopRequireDefault(_user);
 
 var _emotion2 = _interopRequireDefault(_emotion);
 
+var _scores2 = _interopRequireDefault(_scores);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var reducer = (0, _redux.combineReducers)({ user: _user2.default, emotion: _emotion2.default });
+var reducer = (0, _redux.combineReducers)({ user: _user2.default, emotion: _emotion2.default, scores: _scores2.default });
 var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)({ collapsed: true }));
 var store = (0, _redux.createStore)(reducer, middleware);
 
@@ -14587,6 +14601,7 @@ var Camera = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      console.log("scores", this.props.scores);
       return _react2.default.createElement(
         'div',
         { id: 'page', ref: 'page' },
@@ -14695,7 +14710,20 @@ var Camera = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'two-child description' },
-            this.props.emotion && this.props.emotion === 'anger' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'contempt' ? _react2.default.createElement('img', { src: 'http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'disgust' ? _react2.default.createElement('img', { src: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'fear' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'happiness' ? _react2.default.createElement('img', { src: 'https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'neutral' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'sadness' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'surprise' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : _react2.default.createElement(
+            this.props.emotion && this.props.emotion === 'anger' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/rage.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'contempt' ? _react2.default.createElement('img', { src: 'http://68.media.tumblr.com/b219317c75d2ce2a6b43d1f60f259557/tumblr_ni6hvw0Ttu1sfxbt8o1_540.gif', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'disgust' ? _react2.default.createElement('img', { src: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Confounded_Face_Emoji_large.png?v=1480481051', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'fear' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/scream.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'happiness' ? _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('img', { src: 'https://s-media-cache-ak0.pinimg.com/originals/36/f2/af/36f2af1e2e85b403a247f52c78eace8d.png', width: '200', height: '200' }),
+              _react2.default.createElement(
+                'h1',
+                { style: { color: 'white' } },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/camera' },
+                  'You look happy!'
+                )
+              )
+            ) : this.props.emotion && this.props.emotion === 'neutral' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'sadness' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/disappointed.png', width: '200', height: '200' }) : this.props.emotion && this.props.emotion === 'surprise' ? _react2.default.createElement('img', { src: 'https://developer.affectiva.com/wp-content/uploads/sites/2/2017/05/flushed.png', width: '200', height: '200' }) : _react2.default.createElement(
               'h1',
               null,
               'Please take a picture having human face!'
@@ -14704,24 +14732,38 @@ var Camera = function (_React$Component) {
           _react2.default.createElement('div', { className: 'first', onClick: this.handlePage }),
           _react2.default.createElement(
             'div',
-            { className: 'nav two-child' },
+            null,
             _react2.default.createElement(
-              'h1',
-              { style: { color: 'white' } },
+              'table',
+              null,
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/camera' },
-                'Your Results'
-              )
-            ),
-            this.props.emotion !== 'nothing' ? _react2.default.createElement(
-              'p',
-              null,
-              this.props.emotion
-            ) : _react2.default.createElement(
-              'p',
-              null,
-              'Please take a picture having human face! :) '
+                'tr',
+                null,
+                _react2.default.createElement(
+                  'th',
+                  null,
+                  'Emotion Analysis'
+                )
+              ),
+              this.props.scores && this.props.scores.map(function (score) {
+                return _react2.default.createElement(
+                  'tr',
+                  { key: score[0] },
+                  _react2.default.createElement(
+                    'td',
+                    null,
+                    score[0]
+                  ),
+                  ' ',
+                  _react2.default.createElement(
+                    'td',
+                    null,
+                    score[1],
+                    '% '
+                  )
+                );
+              }),
+              ' '
             )
           )
         )
@@ -14733,8 +14775,9 @@ var Camera = function (_React$Component) {
 }(_react2.default.Component);
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var emotion = _ref.emotion;
-  return { emotion: emotion };
+  var emotion = _ref.emotion,
+      scores = _ref.scores;
+  return { emotion: emotion, scores: scores };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -14743,7 +14786,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch((0, _store.uploadImageContent)(imageContent));
     },
     updateEmotion: function updateEmotion() {
-      dispatch((0, _store.updateEmotion)('nothing'));
+      dispatch((0, _store.updateEmotion)('nothing', []));
     }
   };
 };
@@ -15007,6 +15050,8 @@ var _axios = __webpack_require__(68);
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _scores = __webpack_require__(305);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -15028,17 +15073,19 @@ var getEmotion = function getEmotion(emotion) {
 var uploadImageContent = exports.uploadImageContent = function uploadImageContent(imageContent) {
     return function (dispatch) {
         _axios2.default.post('/api/image', { image: imageContent }).then(function (res) {
-            console.log("Emotion: ", res.data);
-            dispatch(getEmotion(res.data));
+            console.log("Emotion: ", res.data[1]);
+            dispatch(getEmotion(res.data[1]));
+            dispatch((0, _scores.getScores)(Object.entries(res.data[0])));
         }).catch(function (err) {
             return console.log(err);
         });
     };
 };
 
-var updateEmotion = exports.updateEmotion = function updateEmotion(emotion) {
+var updateEmotion = exports.updateEmotion = function updateEmotion(emotion, scores) {
     return function (dispatch) {
-        return dispatch(getEmotion(emotion));
+        dispatch(getEmotion(emotion));
+        dispatch((0, _scores.getScores)(scores));
     };
 };
 /**
@@ -16127,7 +16174,7 @@ exports = module.exports = __webpack_require__(151)();
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Oswald|Passion+One);", ""]);
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0;\n  height: 100%;\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px; }\n\nh1 {\n  font-size: 50px;\n  color: white; }\n\n.nav h1 a {\n  color: hotpink;\n  font-size: 150px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\n.nav h1 a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 150px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\nh2 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-size: 26px;\n  margin-bottom: 0px; }\n\nh3 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  margin-bottom: 0px; }\n\nul {\n  padding-top: 12px; }\n\nul li {\n  display: inline;\n  padding: 15px;\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a {\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a:hover {\n  border: 1px solid white;\n  padding: 5px;\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px;\n  font-weight: bold;\n  font-size: 8vw;\n  color: white;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\n.first {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%;\n  color: hotpink; }\n\n.first:after {\n  content: '\\25B2'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background: url(\"http://proof.nationalgeographic.com/files/2015/09/Nujoud_hires.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  flex: 1; }\n\n.description {\n  color: white;\n  font-size: 50px;\n  text-transform: uppercase; }\n\n.two {\n  background: url(\"https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/11/05/636139783202690473265183389_iphone.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row-reverse;\n  flex: 1; }\n\n.three {\n  background: url(\"https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/kG-5Wkc/black-man-serious-face-portrait_n48nuvpve__M0010.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.four {\n  background: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\nimg {\n  align-self: center; }\n\n.nav h1 {\n  top: 0;\n  height: 100%; }\n\nul {\n  top: 0;\n  list-style-type: none;\n  margin: 0;\n  padding: 0; }\n\n.camera-one {\n  background: url(\"https://petapixel.com/assets/uploads/2015/12/photomaking.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  flex: 1; }\n\n.description {\n  color: white;\n  font-size: 50px;\n  text-transform: uppercase; }\n\n.camera-two {\n  background-color: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row-reverse;\n  flex: 1; }\n\n.camera-three {\n  background-color: #6287A7;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center;\n  flex-direction: row; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.camera-four {\n  background: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.video {\n  border-color: palevioletred;\n  border: 10px;\n  border-radius: 35px; }\n\n.canvas {\n  border-color: palevioletred;\n  border: 10px;\n  border-radius: 35px; }\n\n.two-child p {\n  color: hotpink; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\nbody {\n  margin: 0;\n  height: 100%;\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px; }\n\nh1 {\n  font-size: 50px;\n  color: white; }\n\n.nav h1 a {\n  color: hotpink;\n  font-size: 150px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\n.nav h1 a:hover {\n  padding: 5px;\n  color: white;\n  font-size: 150px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\nh2 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  font-size: 26px;\n  margin-bottom: 0px; }\n\nh3 {\n  color: #5e5e5e;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  margin-bottom: 0px; }\n\nul {\n  padding-top: 12px; }\n\nul li {\n  display: inline;\n  padding: 15px;\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a {\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px;\n  padding: 5px;\n  border: 1px solid transparent;\n  transition: border 2s; }\n\nul li a:hover {\n  padding: 5px;\n  color: white;\n  font-size: 100px;\n  text-decoration: none;\n  text-transform: uppercase;\n  letter-spacing: 3px; }\n\n#page {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\nsection {\n  height: 100vh;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\nsection > div {\n  font-family: 'Oswald', sans-serif;\n  letter-spacing: 5px;\n  font-weight: bold;\n  font-size: 8vw;\n  color: white;\n  text-align: center; }\n\n.next {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%; }\n\n.next:after {\n  content: '\\25BC'; }\n\ntable {\n  border-collapse: collapse;\n  width: 100%;\n  font-size: 50px; }\n\nth, td {\n  text-align: left;\n  padding: 8px;\n  color: hotpink; }\n\ntr:nth-child(even) {\n  background-color: #f2f2f2; }\n\nth {\n  background-color: hotpink;\n  color: white;\n  width: 100%; }\n\n.first {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  margin-left: -36px;\n  cursor: pointer;\n  font-size: 400%;\n  color: hotpink; }\n\n.first:after {\n  content: '\\25B2'; }\n\nselect button:not(.next) {\n  content: '\\25BC'; }\n\n.one {\n  background: url(\"http://proof.nationalgeographic.com/files/2015/09/Nujoud_hires.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  flex: 1; }\n\n.description {\n  color: white;\n  font-size: 50px;\n  text-transform: uppercase; }\n\n.two {\n  background: url(\"https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/11/05/636139783202690473265183389_iphone.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row-reverse;\n  flex: 1; }\n\n.three {\n  background: url(\"https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/kG-5Wkc/black-man-serious-face-portrait_n48nuvpve__M0010.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.four {\n  background: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\nimg {\n  align-self: center; }\n\n.nav h1 {\n  top: 0;\n  height: 100%; }\n\nul {\n  top: 0;\n  list-style-type: none;\n  margin: 0;\n  padding: 0; }\n\n.camera-one {\n  background: url(\"https://petapixel.com/assets/uploads/2015/12/photomaking.jpg\") no-repeat center center fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  flex: 1; }\n\n.description {\n  color: white;\n  font-size: 50px;\n  text-transform: uppercase; }\n\n.camera-two {\n  background-color: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row-reverse;\n  flex: 1; }\n\n.camera-three {\n  background-color: #6287A7;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  flex-direction: row;\n  flex: 1;\n  width: 100%;\n  height: 100vh;\n  justify-content: center;\n  flex-direction: row; }\n\n.three-child {\n  height: 100vh;\n  flex: 1;\n  width: 100%;\n  align-content: center; }\n\n.camera-four {\n  background: white;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.video {\n  border-color: palevioletred;\n  border: 10px;\n  border-radius: 35px; }\n\n.canvas {\n  border-color: palevioletred;\n  border: 10px;\n  border-radius: 35px; }\n\n.two-child p {\n  color: hotpink; }\n", ""]);
 
 // exports
 
@@ -31484,6 +31531,35 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 305 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case GET_SCORES:
+      return action.scores;
+    default:
+      return state;
+  }
+};
+
+var GET_SCORES = exports.GET_SCORES = 'GET_SCORES';
+
+var getScores = exports.getScores = function getScores(scores) {
+  return { type: GET_SCORES, scores: scores };
+};
 
 /***/ })
 /******/ ]);
